@@ -1,11 +1,6 @@
-function Part(props) {
-  return (
-    <div>
-      <p>
-        {props.part} {props.exercises}
-      </p>  
-    </div>
-  )
+const Part = (props) => {
+  console.log("part props:", props)
+  return <p>{props.part} {props.exercises}</p>
 }
 
 export default Part;
