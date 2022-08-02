@@ -7,13 +7,15 @@ const Statistics = (props) => {
     const average = (props.good - props.bad)/all
 
     return (
-      <>
-        <Statistic text='good' value={props.good} />
-        <Statistic text='neutral' value={props.neutral} />
-        <Statistic text='bad' value={props.bad} />
-        <Statistic text='average' value={average} />
-        <Statistic text='positive' value={(props.good * 100)/all + '%'} />
-      </>
+      <table>
+        <tbody>
+          <Statistic text='good' value={props.good} />
+          <Statistic text='neutral' value={props.neutral} />
+          <Statistic text='bad' value={props.bad} />
+          <Statistic text='average' value={average} />
+          <Statistic text='positive' value={(props.good * 100)/all + '%'} />
+        </tbody>
+      </table>
     );
   }
   else { 
