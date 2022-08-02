@@ -2,13 +2,14 @@ import { useState } from 'react'
 import Header from './components/Header'
 import Title from './components/Title'
 import Button from './components/Button'
-import Rating from './components/Rating'
+import Feedback from './components/Feedback'
 
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const all = good + neutral + bad
 
   const handleGoodClick = () => {
     setGood(good + 1)
@@ -29,9 +30,10 @@ const App = () => {
       <Button handleClick={handleNeutralClick} text='neutral' />
       <Button handleClick={handleBadClick} text='bad' />
       <Title />
-      <Rating value={good} text='good'/>
-      <Rating value={neutral} text='neutral'/>
-      <Rating value={bad} text='bad'/>
+      <Feedback value={good} text='good'/>
+      <Feedback value={neutral} text='neutral'/>
+      <Feedback value={bad} text='bad'/>
+      <Feedback value={all} text='all'/>
     </div>
   )
 }
