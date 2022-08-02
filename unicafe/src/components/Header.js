@@ -1,5 +1,5 @@
-const Header = () => {
-  return <h1>give feedback</h1>
+const Header = (props) => {
+  return <h1>{props.title}</h1>
 }
 
 export default Header;
