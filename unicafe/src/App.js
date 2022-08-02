@@ -1,22 +1,8 @@
 import { useState } from 'react'
-
-const Header = () => {
-  return <h1>give feedback</h1>
-}
-
-const Title = () => {
-  return <h1> statistics</h1>
-}
-
-const Rating = (props) => {
-  return <p>{props.text} {props.value}</p>
-}
-
-const Button = (props) => (
-  <button onClick={props.handleClick}>
-    {props.text}
-  </button>
-)
+import Header from './components/Header'
+import Title from './components/Title'
+import Button from './components/Button'
+import Rating from './components/Rating'
 
 const App = () => {
   // save clicks of each button to its own state
@@ -50,4 +36,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
