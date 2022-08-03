@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Header from './components/Header'
+import Button from './components/Button'
+import Anecdote from './components/Anecdote'
 
 const App = () => {
   const anecdotes = [
@@ -28,9 +31,10 @@ const App = () => {
 
   return (
     <div>
-      <p>{anecdotes[selected]} {scores[selected]}</p>
-      <button onClick={voteForAnecdote}>Vote.</button>
-      <button onClick={selectRandomAnecdote}>Next anecdote.</button>
+      <Header title='Your coding anecdote for the day!' />
+      <Anecdote anecdote={anecdotes[selected]} score={scores[selected]} />
+      <Button onClick={voteForAnecdote} text='Vote.' />
+      <Button onClick={selectRandomAnecdote} text='Next anecdote.' />
     </div>
   )
 }
