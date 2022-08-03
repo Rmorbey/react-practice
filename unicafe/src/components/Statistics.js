@@ -1,19 +1,19 @@
 import Statistic from '../components/Statistic'
 
-const Statistics = (props) => {
-  const all = props.good + props.neutral + props.bad;
+const Statistics = ({ good, neutral, bad}) => {
+  const all = good + neutral + bad;
 
   if (all > 0) {
-    const average = (props.good - props.bad)/all
+    const average = (good - bad)/all
 
     return (
       <table>
         <tbody>
-          <Statistic text='good' value={props.good} />
-          <Statistic text='neutral' value={props.neutral} />
-          <Statistic text='bad' value={props.bad} />
+          <Statistic text='good' value={good} />
+          <Statistic text='neutral' value={neutral} />
+          <Statistic text='bad' value={bad} />
           <Statistic text='average' value={average} />
-          <Statistic text='positive' value={(props.good * 100)/all + '%'} />
+          <Statistic text='positive' value={(good * 100)/all + '%'} />
         </tbody>
       </table>
     );
