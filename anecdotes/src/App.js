@@ -27,6 +27,18 @@ const App = () => {
     anecdoteScores[selected] += 1;
     setScores(anecdoteScores);
   }
+
+  const Winner = () => {
+    if (scores.reduce((a, b) => a + b, 0) > 0) {
+      const max = Math.max(...scores);
+      const index = scores.indexOf(max);
+
+      return <Anecdote anecdote={anecdotes[index]} score={scores[index]} />
+    }
+    else { 
+      return <p>No votes given.</p>
+    }
+  }
    
 
   return (
@@ -35,6 +47,8 @@ const App = () => {
       <Anecdote anecdote={anecdotes[selected]} score={scores[selected]} />
       <Button onClick={voteForAnecdote} text='Vote.' />
       <Button onClick={selectRandomAnecdote} text='Next anecdote.' />
+      <Header title='Anecdote with the most votes!' />
+      <Winner />
     </div>
   )
 }
