@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import Header from './components/Header'
-import Button from './components/Button'
-import Anecdote from './components/Anecdote'
+import { useState } from 'react';
+import Header from './components/Header';
+import Button from './components/Button';
+import Anecdote from './components/Anecdote';
+import Winner from './components/Winner';
 
 const App = () => {
   const anecdotes = [
@@ -28,19 +29,6 @@ const App = () => {
     setScores(anecdoteScores);
   }
 
-  const Winner = () => {
-    if (scores.reduce((a, b) => a + b, 0) > 0) {
-      const max = Math.max(...scores);
-      const index = scores.indexOf(max);
-
-      return <Anecdote anecdote={anecdotes[index]} score={scores[index]} />
-    }
-    else { 
-      return <p>No votes given.</p>
-    }
-  }
-   
-
   return (
     <div>
       <Header title='Your coding anecdote for the day!' />
@@ -48,9 +36,9 @@ const App = () => {
       <Button onClick={voteForAnecdote} text='Vote.' />
       <Button onClick={selectRandomAnecdote} text='Next anecdote.' />
       <Header title='Anecdote with the most votes!' />
-      <Winner />
+      <Winner anecdotes={anecdotes} scores={scores} />
     </div>
   )
 }
 
-export default App
+export default App;
