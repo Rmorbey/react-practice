@@ -1,6 +1,8 @@
-const Part = (props) => {
-  console.log("part props:", props)
-  return <p>{props.part.name} {props.part.exercises}</p>
+import React from 'react';
+
+const Part = ({ part }) => {
+  console.log("part props:", part)
+  return <p>{part.name} {part.exercises}</p>
 }
 
 export default Part;

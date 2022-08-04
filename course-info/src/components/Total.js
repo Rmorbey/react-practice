@@ -1,6 +1,8 @@
-const Total = (props) => {
-  console.log("Total props:", props)
-  return <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
+import React from 'react';
+
+const Total = ({ course }) => {
+  console.log("Total props:", course)
+  return <p>Number of exercises {course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises + course.parts[3].exercises}</p>
 }
 
 export default Total;
