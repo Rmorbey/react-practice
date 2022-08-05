@@ -1,11 +1,15 @@
 import React from 'react';
 import Person from '../components/Person';
 
-const Contacts = ({ persons }) => {
+const Contacts = ({ persons, filter }) => {
+  let filteredContacts = persons
+  if (filter) {
+    filteredContacts = persons.filter(person => new RegExp(filter, "i").test(person.name));
+  }
   return (
     <>
       <div>
-        {persons.map(person => 
+        {filteredContacts.map(person => 
           <Person key={person.name} name={person.name} number={person.number} />
         )}
       </div>
