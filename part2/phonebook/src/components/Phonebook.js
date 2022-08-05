@@ -3,11 +3,16 @@ import Header from '../components/Header';
 import Form from '../components/Form';
 import Contacts from '../components/Contacts';
 
-const Phonebook = ( { persons }) => {
+const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, formNameOnChange, formNumberOnChange, }) => {
   return (
     <div>
       <Header title='Phonebook' />
-      <Form />
+      <Form 
+      onSubmit={formOnSubmit} 
+      nameValue={formNameValue}
+      nameOnChange={formNameOnChange}
+      numberValue={formNumberValue}
+      numberOnChange={formNumberOnChange} />
       <Header title='Numbers' />
       <Contacts persons={persons} />
     </div>
