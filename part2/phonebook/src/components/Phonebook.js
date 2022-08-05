@@ -20,7 +20,9 @@ const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, fil
       numberValue={formNumberValue}
       numberOnChange={formNumberOnChange} />
       <Header title='List of contacts' />
-      <Contacts persons={persons} filter={filterValue} />
+      <Contacts
+      persons={persons}
+      filter={filterValue} />
     </div>
   )
 }
