@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import Header from './components/Header';
-import Form from './components/Form';
+import Phonebook from './components/Phonebook';
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -10,11 +9,8 @@ const App = () => {
 
   return (
     <div>
-      <Header title='Phonebook' />
-      <Form />
+      <Phonebook persons={persons} />
       <div>debug: {newName}</div>
-      <Header title='Numbers' />
-      ...
     </div>
   )
 }
