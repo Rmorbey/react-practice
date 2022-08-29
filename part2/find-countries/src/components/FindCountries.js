@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import UserInput from './UserInput';
 import Countries from './Countries';
 
-const FindCountries = ( { filterValue, filterOnChange, countries}) => {
+const FindCountries = ( { filterValue, filterOnChange, countries, setCountries}) => {
   return (
     <div>
       <Header title='Find Countires' />
@@ -13,7 +13,7 @@ const FindCountries = ( { filterValue, filterOnChange, countries}) => {
       onChange={filterOnChange} />
       <Countries
       countries={countries}
-      filter={filterValue}
+      setCountries={setCountries}
       />
     </div>
   )
