@@ -4,12 +4,13 @@ const Country = ({ country }) => {
   return (
     <div>
       <h1>{country.name.common}</h1>
-      <p>capital: {country.capital}</p>
+      <p>Capital City: {country.capital}</p>
+      <p>Area: {country.area}</p>
       <h2>Spoken Languages</h2>
       <ul>
-        add languages
+        {Object.values(country.languages).map((value, index) => <li key={index}>{value}</li>)}
       </ul>
-      <img src={country.flag} alt="Country flag"></img>
+      <img src={country.flags[Object.keys(country.flags)[0]]} alt="Country flag"></img>
     </div>
   )
 }
