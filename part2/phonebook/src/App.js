@@ -26,6 +26,16 @@ const App = () => {
       number: newNumber
     }
 
+    axios
+      .post(`http://localhost:3001/persons`, personObject)
+      .then(response => {
+        setPersons(persons.concat(response.data))
+        setNewName('');
+        setNewNumber('');
+        console.log(response)
+    })
+
+
     const regExp = `^${newName}$`
     const match = persons.filter(person => new RegExp(regExp, "i").test(person.name));
     if (match.length > 0) {
