@@ -21,29 +21,40 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault();
+    const regExp = `^${newName}$`
+    const match = persons.filter(person => new RegExp(regExp, "i").test(person.name));
     const personObject = {
       name: newName,
       number: newNumber
     }
-
-    personService
-      .create(personObject)
-      .then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson))
-        setNewName('');
-        setNewNumber('');
-        console.log('create contact data response: ', returnedPerson)
-    })
-
-
-    const regExp = `^${newName}$`
-    const match = persons.filter(person => new RegExp(regExp, "i").test(person.name));
-    if (match.length > 0) {
-      window.alert(`${newName} is already a contact in the phonebook`);
+    
+    if (match.length === 0) {
+      personService
+        .create(personObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson))
+          setNewName('');
+          setNewNumber('');
+          console.log('create contact data response: ', returnedPerson)
+      })
     } else {
-      setPersons(persons.concat(personObject));
-    }
-    setNewName('');
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook, replace the old number with a new one?`
+        )
+      ) {
+        personService
+          .update(match[0].id, personObject)
+          .then((returnedPerson) => {
+            const updatedPersons = persons.map((person) => 
+              person.id !== returnedPerson.id ? person : returnedPerson
+            );
+            setPersons(updatedPersons);
+          })
+        }
+      }
+      setNewName('');
+      setNewNumber('');
   }
 
   const deletePerson = (id, name) => {
