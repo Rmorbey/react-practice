@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Phonebook from './components/Phonebook';
 import personService from './services/persons';
-import axios from 'axios';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -47,6 +46,17 @@ const App = () => {
     setNewName('');
   }
 
+  const deletePerson = (id, name) => {
+    if (window.confirm(`Do you want to delete ${name} from your contacts?`)) {
+      personService
+        .remove(id)
+        .then((response) => {
+          const newPersons = persons.filter((person) => person.id !== id);
+          setPersons(newPersons)
+        })
+    }
+  }
+
   const handleNameChange = (event) => {
     setNewName(event.target.value)
   }
@@ -69,7 +79,8 @@ const App = () => {
       filterValue={filter}
       formNameOnChange={handleNameChange}
       formNumberOnChange={handleNumberChange}
-      filterOnChange={handleFilterChange} />
+      filterOnChange={handleFilterChange}
+      deleteOnClick={deletePerson} />
     </div>
   )
 }

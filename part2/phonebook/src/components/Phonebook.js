@@ -4,7 +4,7 @@ import Form from '../components/Form';
 import Contacts from '../components/Contacts';
 import UserInput from './UserInput';
 
-const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, filterValue, formNameOnChange, formNumberOnChange, filterOnChange }) => {
+const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, filterValue, formNameOnChange, formNumberOnChange, filterOnChange, deleteOnClick }) => {
   return (
     <div>
       <Header title='Phonebook' />
@@ -22,7 +22,8 @@ const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, fil
       <Header title='List of contacts' />
       <Contacts
       persons={persons}
-      filter={filterValue} />
+      filter={filterValue}
+      deleteOnClick={deleteOnClick} />
     </div>
   )
 }
