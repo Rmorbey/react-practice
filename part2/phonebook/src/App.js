@@ -60,6 +60,15 @@ const App = () => {
               setMessage(null)
             }, 5000)
           })
+          .catch(error => {
+            console.log(error)
+            setMessage(
+              `Request failed. Information of ${newName} has already been removed from server.`
+            )
+            setTimeout(() => {
+              setMessage(null)
+            }, 5000)
+          })
         }
       }
       setNewName('');
@@ -67,7 +76,8 @@ const App = () => {
   }
 
   const deletePerson = (id, name) => {
-    if (window.confirm(`Do you want to delete ${name} from your contacts?`)) {
+    if (window.confirm(`Do you want to delete ${name} from your contacts?`)) 
+      {
       personService
         .remove(id)
         .then((response) => {
@@ -78,7 +88,16 @@ const App = () => {
             setMessage(null)
           }, 5000)
         })
-    }
+        .catch(error => {
+          console.log(error)
+          setMessage(
+            `Request failed. Information of ${name} has already been removed from server.`
+          )
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
+        })
+      }
   }
 
   const handleNameChange = (event) => {
