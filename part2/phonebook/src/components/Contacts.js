@@ -10,7 +10,7 @@ const Contacts = ({ persons, filter, deleteOnClick }) => {
     <>
       <div>
         {filteredContacts.map(person => 
-          <Person key={person.name} name={person.name} number={person.number} deletePerson={() => deleteOnClick(person.id)} />
+          <Person key={person.name} name={person.name} number={person.number} deletePerson={() => deleteOnClick(person.id, person.name)} />
         )}
       </div>
     </>

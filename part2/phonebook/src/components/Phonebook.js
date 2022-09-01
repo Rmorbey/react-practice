@@ -3,11 +3,13 @@ import Header from '../components/Header';
 import Form from '../components/Form';
 import Contacts from '../components/Contacts';
 import UserInput from './UserInput';
+import Notification from './Notification';
 
-const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, filterValue, formNameOnChange, formNumberOnChange, filterOnChange, deleteOnClick }) => {
+const Phonebook = ( { persons, formOnSubmit, formNameValue, formNumberValue, filterValue, formNameOnChange, formNumberOnChange, filterOnChange, deleteOnClick, message }) => {
   return (
     <div>
       <Header title='Phonebook' />
+      <Notification message={message} />
       <UserInput
       text='Search through contacts:'
       value={filterValue}

@@ -7,6 +7,7 @@ const App = () => {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     console.log('effect')
@@ -35,6 +36,10 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('');
           setNewNumber('');
+          setMessage(`Added ${returnedPerson.name} to contacts.`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
           console.log('create contact data response: ', returnedPerson)
       })
     } else {
@@ -50,6 +55,10 @@ const App = () => {
               person.id !== returnedPerson.id ? person : returnedPerson
             );
             setPersons(updatedPersons);
+            setMessage(`Updated ${newName} number in contacts.`)
+            setTimeout(() => {
+              setMessage(null)
+            }, 5000)
           })
         }
       }
@@ -64,6 +73,10 @@ const App = () => {
         .then((response) => {
           const newPersons = persons.filter((person) => person.id !== id);
           setPersons(newPersons)
+          setMessage(`Deleted ${name} from contacts.`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
         })
     }
   }
@@ -91,7 +104,8 @@ const App = () => {
       formNameOnChange={handleNameChange}
       formNumberOnChange={handleNumberChange}
       filterOnChange={handleFilterChange}
-      deleteOnClick={deletePerson} />
+      deleteOnClick={deletePerson}
+      message={message} />
     </div>
   )
 }
