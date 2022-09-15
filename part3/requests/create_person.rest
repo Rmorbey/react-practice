@@ -2,8 +2,6 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "content": "VS Code REST client is pretty good",
-    "important": false,
     "name": "George",
     "number": "002-123-09876"
 }
@@ -13,8 +11,6 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "content": "VS Code REST client is pretty good",
-    "important": false,
     "name": "Arto Hellas",
     "number": "002-123-1111"
 }
@@ -24,6 +20,5 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-    "content": "VS Code REST client is pretty good",
-    "important": false
+
 }
